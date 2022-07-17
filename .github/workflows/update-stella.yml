@@ -1,6 +1,8 @@
 name: Update Stella
 
 on:
+  pull_request:
+  push:
   workflow_dispatch:
   schedule:
     # run every 5 minutes
