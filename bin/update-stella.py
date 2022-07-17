@@ -98,9 +98,9 @@ def get_update():
         random_str = gen_str()
         snapshot_name = 'stella' + '-' + date + '-' + random_str
         print("-> SNAPSHOT_NAME:", snapshot_name)
-        subprocess.call(["gcloud", "compute", "snapshots", "create", snapshot_name, '--source-disk "stella"', '--source-disk-zone "asia-northeast2-b"', "--storage-location=asia-northeast2", "-q", "--t"])
+        subprocess.call(["gcloud", "compute", "snapshots", "create", snapshot_name, '--source-disk', '"stella"', '--source-disk-zone', '"asia-northeast2-b"',"--storage-location=asia-northeast2", "-q", "--t"])
         print("-> Start Update")
-        subprocess.call(["gcloud", "compute", "ssh", '--zone "asia-northeast2-b"', '"stella"', '--command "sudo bash /home/caipira113/update.sh"', "--ssh-key-expire-after=30m", "-q", "--t"])
+        subprocess.call(["gcloud", "compute", "ssh", '--zone', '"asia-northeast2-b"', '"stella"', '--command','"sudo bash /home/caipira113/update.sh"', "--ssh-key-expire-after=30m", "-q", "--t"])
         print("-> Sleep for 15.5 seconds")
         time.sleep(15.5)
         print("-> Check if update is done")
