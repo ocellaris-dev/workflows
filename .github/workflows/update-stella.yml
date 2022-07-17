@@ -1,0 +1,39 @@
+name: Update Stella
+on:
+  workflow_dispatch:
+    schedule:
+      # run every 5 minutes
+      - cron: '*/5 * * * *'
+
+jobs:
+  Main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+        with:
+          repo: 'workflows'
+          branch: 'main'
+          dir: '.'
+      - name: Set Timezone
+        run: |
+          sudo timedatectl set-timezone Asia/Seoul
+      - name: Dependencies
+        run: |
+          pip3 install requests
+      - name: Add mask
+        run: |
+          echo "::add-mask::${{ secrets.MASK_IP }}"
+          echo "::add-mask::${{ secrets.PROJECT_ID }}"
+      - name: Configure the Google Cloud CLI
+        run: |
+          echo ${{ secrets.SERVICE_ACCOUNT_JSON }} > /tmp/service-account.json
+          gcloud auth activate-service-account ${{ secrets.SERVICE_ACCOUNT_EMAIL }} --key-file=/tmp/service-account.json
+          rm ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          gcloud config set project ${{ secrets.PROJECT_ID }} -q
+      - name: Update.py
+        env:
+          MISSKEY_CREDENTIAL: ${{ secrets.MISSKEY_CREDENTIAL }}
+        shell: python
+        run: |
+          python3 ./bin/update-stella.py
