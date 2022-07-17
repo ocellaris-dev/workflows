@@ -36,4 +36,4 @@ jobs:
           MISSKEY_CREDENTIAL: ${{ secrets.MISSKEY_CREDENTIAL }}
         shell: python
         run: |
-          python3 ./bin/update-stella.py
+          python3 bin/update-stella.py
