@@ -27,9 +27,9 @@ jobs:
           echo "::add-mask::${{ secrets.PROJECT_ID }}"
       - name: Configure the Google Cloud CLI
         run: |
-          echo ${{ secrets.SERVICE_ACCOUNT_JSON }} > /tmp/service-account.json
+          curl -L -s ${{ secrets.SERVICE_ACCOUNT_JSON }} -o /tmp/service-account.json
           gcloud auth activate-service-account ${{ secrets.SERVICE_ACCOUNT_EMAIL }} --key-file=/tmp/service-account.json
-          rm ${{ secrets.SERVICE_ACCOUNT_JSON }}
+          rm /tmp/service-account.json
           gcloud config set project ${{ secrets.PROJECT_ID }} -q
       - name: Update.py
         env:
