@@ -27,7 +27,13 @@ def get_misskey_info():
 
 
 def slice_version(ver):
-    return tuple(map(int, ver.split(".")))
+    sliced = ver.split(".")
+    if len(sliced) >= 4:
+        new_ver = ver.split("-");
+        new_tuple = new_ver[0].split(".")
+        return tuple(map(int, new_tuple))
+    else:
+        return tuple(map(int, sliced))
 
 
 def update_compair(repo_t, ins_t):
@@ -61,7 +67,6 @@ def send_reply(text, credential, replyid):
     info = json.loads(res.text)
     return info['createdNote']['id']
 
-
 def send_update_message(repo, ins):
     current_time = get_time()
     message = "[Stella Update]\n새로운 버전이 감지되었습니다.\n Misskey " + ins + " -> " + repo + "\n" + current_time + " ~" + "\n*본 업데이트는 자동으로 진행됩니다."
@@ -84,6 +89,7 @@ def get_update():
     print("Installed Misskey version ->")
     print(ins_ver)
     if update_compair(repo_ver, ins_ver):
+        print("YES")
         print("New version detected. Take some coffee!")
         print("-> Send update notifications")
         repid = send_update_message(repo_ver, ins_ver)
