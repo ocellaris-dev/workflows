@@ -101,7 +101,6 @@ def get_update():
         subprocess.call(["gcloud", "compute", "snapshots", "create", snapshot_name, '--source-disk', 'stella', '--source-disk-zone=asia-northeast2-b', "--storage-location=asia-northeast2", "-q"])
         print("-> Start Update")
         subprocess.call(["gcloud", "compute", "ssh", '--zone=asia-northeast2-b', 'stella', '--command="sudo bash /home/caipira113/update.sh"', "--ssh-key-expire-after=30m", "-q"])
-        subprocess.call(["gcloud", "compute", "ssh", '--zone=asia-northeast2-b', 'stella', '--command', '"sudo bash /home/caipira113/update.sh"', "--ssh-key-expire-after=30m", "-q"])
         print("-> Sleep for 15.5 seconds")
         time.sleep(15.5)
         print("-> Check if update is done")
