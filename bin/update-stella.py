@@ -29,7 +29,7 @@ def get_misskey_info():
 def slice_version(ver):
     sliced = ver.split(".")
     if len(sliced) >= 4:
-        new_ver = ver.split("-");
+        new_ver = ver.split("-")
         new_tuple = new_ver[0].split(".")
         return tuple(map(int, new_tuple))
     else:
@@ -98,9 +98,13 @@ def get_update():
         random_str = gen_str()
         snapshot_name = 'stella' + '-' + date + '-' + random_str
         print("-> SNAPSHOT_NAME:", snapshot_name)
-        subprocess.call(["gcloud", "compute", "snapshots", "create", snapshot_name, '--source-disk', 'stella', '--source-disk-zone=asia-northeast2-b',"--storage-location=asia-northeast2", "-q"])
+        subprocess.call(["gcloud", "compute", "snapshots", "create", snapshot_name, '--source-disk', 'stella', '--source-disk-zone=asia-northeast2-b', "--storage-location=asia-northeast2", "-q"])
         print("-> Start Update")
+<<<<<<< HEAD
         subprocess.call(["gcloud", "compute", "ssh", '--zone=asia-northeast2-b', 'stella', '--command="sudo bash /home/caipira113/update.sh"', "--ssh-key-expire-after=30m", "-q"])
+=======
+        subprocess.call(["gcloud", "compute", "ssh", '--zone=asia-northeast2-b', 'stella', '--command', '"sudo bash /home/caipira113/update.sh"', "--ssh-key-expire-after=30m", "-q"])
+>>>>>>> da3309f5094dc4f1c3f9b706c7414d24179dbf14
         print("-> Sleep for 15.5 seconds")
         time.sleep(15.5)
         print("-> Check if update is done")
