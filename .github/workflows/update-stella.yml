@@ -16,6 +16,7 @@ jobs:
           repo: 'workflows'
           branch: 'main'
           dir: '.'
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v4
