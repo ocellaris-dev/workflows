@@ -4,9 +4,9 @@ on:
   pull_request:
   push:
   workflow_dispatch:
-  schedule:
-    # run every 15 minutes
-    - cron: '*/15 * * * *'
+#  schedule:
+#    # run every 15 minutes
+#    - cron: '*/15 * * * *'
 
 jobs:
   Main:
