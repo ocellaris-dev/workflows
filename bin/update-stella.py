@@ -26,29 +26,6 @@ def get_misskey_info():
     return info["version"]
 
 
-def slice_version(ver):
-    sliced = ver.split(".")
-    if len(sliced) >= 4:
-        new_ver = ver.split("-")
-        new_tuple = new_ver[0].split(".")
-        return tuple(map(int, new_tuple))
-    else:
-        return tuple(map(int, sliced))
-
-
-def update_compair(repo_t, ins_t):
-    repo = slice_version(repo_t)
-    ins = slice_version(ins_t)
-    if repo[0] > ins[0]:
-        return True
-    elif repo[1] > ins[1]:
-        return True
-    elif repo[2] > ins[2]:
-        return True
-    else:
-        return False
-
-
 def get_time():
     tm = time.localtime(time.time())
     return time.strftime("%H:%M", tm) + " (KST)"
@@ -88,7 +65,7 @@ def get_update():
     print(repo_ver)
     print("Installed Misskey version ->")
     print(ins_ver)
-    if update_compair(repo_ver, ins_ver):
+    if repo_ver != ins_ver:
         print("YES")
         print("New version detected. Take some coffee!")
         print("-> Send update notifications")
