@@ -46,7 +46,7 @@ def send_reply(text, credential, replyid):
 
 def send_update_message(repo, ins):
     current_time = get_time()
-    message = "[Stella Update]\n새로운 버전이 감지되었습니다.\n Misskey " + ins + " -> " + repo + "\n" + current_time + " ~" + "\n*본 업데이트는 자동으로 진행됩니다."
+    message = "[Stella Update]\n" + current_time + " 새로운 버전이 감지되었습니다.\n Misskey " + ins + " -> " + repo + "\n" + "\n*본 업데이트는 자동으로 진행됩니다."
     return send_toot(message, credential)
 
 
