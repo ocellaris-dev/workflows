@@ -4,6 +4,12 @@ on:
   pull_request:
   push:
   workflow_dispatch:
+    inputs:
+      debug:
+        default: false
+        description: Enable debug mode
+        required: true
+        type: boolean
 #  schedule:
 #    # run every 15 minutes
 #    - cron: '*/15 * * * *'
@@ -42,8 +48,12 @@ jobs:
           rm /tmp/service-account.json
           gcloud config set project ${{ secrets.PROJECT_ID }} -q
 
-      - name: Update.py
-        env:
-          MISSKEY_CREDENTIAL: ${{ secrets.MISSKEY_CREDENTIAL }}
+  - name: Update.py
+      env:
+        MISSKEY_CREDENTIAL: ${{ secrets.MISSKEY_CREDENTIAL }}
+      if $[{ github.event.inputs.debug }] == true:
+        run: |
+          python3 /home/runner/work/workflows/workflows/bin/update-stella.py -d
+      else:
         run: |
           python3 /home/runner/work/workflows/workflows/bin/update-stella.py
