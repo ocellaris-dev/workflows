@@ -15,7 +15,7 @@ def send_update_message(repo, ins):
     if not debug:
         message = "[Stella Update]\n" + " 새로운 버전이 감지되었습니다.\n Misskey " + ins + " -> " + repo + "\n" + current_time + "\n*본 업데이트는 자동으로 진행됩니다."
     else:
-        message = "[Stella Update]\n" + " 새로운 버전이 감지되었습니다.\n Misskey " + ins + " -> " + repo + "\n" + cu    rrent_time + "\n*본 업데이트는 자동으로 진행됩니다.\n**[본 메시지는 자동 업데이트 시스템을 테스트하기 위한 디버그 메시지입니다. 업데이트가 진행되지 않으니 무시하시길 바랍니다.]**"
+        message = "[Stella Update]\n" + " 새로운 버전이 감지되었습니다.\n Misskey " + ins + " -> " + repo + "\n" + crrent_time + "\n*본 업데이트는 자동으로 진행됩니다.\n**[본 메시지는 자동 업데이트 시스템을 테스트하기 위한 디버그 메시지입니다. 업데이트가 진행되지 않으니 무시하시길 바랍니다.]**"
     return misskey.send_toot(message, credential, debug)
 
 
