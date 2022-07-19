@@ -1,10 +1,10 @@
-import subprocess
-import time
 import os
+import subprocess
 import sys
-import utils
+import time
+
 import misskey
-import requests
+import utils
 
 credential = os.getenv("MISSKEY_CREDENTIAL")
 debug = False
@@ -12,6 +12,7 @@ debug = False
 if len(sys.argv) > 1:
     if sys.argv[1] == "-d":
         debug = True
+
 
 def send_update_message(repo, ins):
     current_time = utils.get_time()
@@ -62,5 +63,6 @@ def get_update():
     else:
         print("Misskey is up-to-date!")
         exit()
+
 
 get_update()

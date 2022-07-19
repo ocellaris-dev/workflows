@@ -1,6 +1,7 @@
 import json
 import requests
 
+
 def send_toot(text, credential, local):
     if not local:
         message = {'i': credential, 'text': text}
