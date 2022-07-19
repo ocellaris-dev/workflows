@@ -1,9 +1,13 @@
 name: Update Stella
 
 on:
-  pull_request:
-  push:
   workflow_dispatch:
+    inputs:
+      debug:
+        default: false
+        description: Enable debug mode
+        required: true
+        type: boolean
 #  schedule:
 #    # run every 15 minutes
 #    - cron: '*/15 * * * *'
@@ -43,7 +47,15 @@ jobs:
           gcloud config set project ${{ secrets.PROJECT_ID }} -q
 
       - name: Update.py
+        if: ${{ github.event.inputs.debug == 'false' }}
         env:
           MISSKEY_CREDENTIAL: ${{ secrets.MISSKEY_CREDENTIAL }}
         run: |
           python3 /home/runner/work/workflows/workflows/bin/update-stella.py
+
+      - name: debug mode - Update.py
+        if: ${{ github.event.inputs.debug == 'true' }}
+        env:
+          MISSKEY_CREDENTIAL: ${{ secrets.MISSKEY_CREDENTIAL }}
+        run: |
+          python3 /home/runner/work/workflows/workflows/bin/update-stella.py -d
