@@ -84,8 +84,5 @@ fabric.properties
 
 # Python Cache
 __pycache__/
-<<<<<<< HEAD
 *.py[cod]
-=======
 *.pyc
->>>>>>> fc2750cc175a6e090c9570df6a3e68c78789b40d
