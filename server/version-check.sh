@@ -17,7 +17,7 @@ echo
 if [ "$ins_ver" = "$repo_ver" ]; then
     echo "-> Misskey is up-to-date!"
     bash /home/caipira113/cron.sh &
-    gh workflow run merge-upstream.yml -R ocellaris-dev/stella
+    gh workflow run merge-upstream.yml -f docker=true -R ocellaris-dev/stella
     sudo service cron start
     exit 0
 else
