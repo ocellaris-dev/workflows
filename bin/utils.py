@@ -7,7 +7,7 @@ import requests
 
 
 def get_package_info():
-    res = requests.get("https://raw.githubusercontent.com/misskey-dev/misskey/develop/package.json")
+    res = requests.get("https://raw.githubusercontent.com/ocellaris-dev/stella/develop/package.json")
     info = json.loads(res.text)
     return info["version"]
 
