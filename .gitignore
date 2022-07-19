@@ -85,3 +85,4 @@ fabric.properties
 # Python Cache
 __pycache__/
 *.py[cod]
+*.pyc
