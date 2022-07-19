@@ -76,7 +76,7 @@ def debug_functions():
 
 if len(sys.argv) > 1 and sys.argv[1] == "-d":
     debug = True
-    print("debug mode enabled. starting feature sequence.")
+    print("debug mode enabled. starting feature test sequence.")
     debug_functions()
 else:
     get_update()
