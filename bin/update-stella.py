@@ -63,7 +63,7 @@ def get_update():
         print("Misskey is up-to-date!")
         exit()
 
-def debug():
+def debug_functions():
     print("[Utils Test]")
     print("get_time-> ", uitls.get_time())
     print("gen_str-> ", utils.gen_str())
@@ -81,6 +81,6 @@ def debug():
 if len(sys.argv) > 1 and sys.argv[1] == "-d":
     debug = True
     print("debug mode enabled. starting feature sequence.")
-    debug()
+    debug_functions()
 else:
     get_update()
