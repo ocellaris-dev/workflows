@@ -65,9 +65,9 @@ def get_update():
 
 def debug_functions():
     print("[Utils Test]")
-    print("get_time-> ", uitls.get_time())
+    print("get_time-> ", utils.get_time())
     print("gen_str-> ", utils.gen_str())
-    print("get_snapshot_utc_time-> ", get_snapshot_utc_time())
+    print("get_snapshot_utc_time-> ", utils.get_snapshot_utc_time())
     print("[Toot-Notification Test]")
     repo_ver = utils.get_package_info()
     ins_ver = utils.get_misskey_info()
