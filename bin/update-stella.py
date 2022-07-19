@@ -9,9 +9,8 @@ import utils
 credential = os.getenv("MISSKEY_CREDENTIAL")
 debug = False
 
-if len(sys.argv) > 1:
-    if sys.argv[1] == "-d":
-        debug = True
+if len(sys.argv) > 1 and sys.argv[1] == "-d":
+    debug = True
 
 
 def send_update_message(repo, ins):
