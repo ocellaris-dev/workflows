@@ -1,11 +1,10 @@
 import os
-import subprocess
 import sys
 import time
 
 import misskey
-import utils
 import stella
+import utils
 
 credential = os.getenv("MISSKEY_CREDENTIAL")
 debug = False
