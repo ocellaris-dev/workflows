@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo
+
 #current time
 tdc1=$(timedatectl | grep "Local time" | awk '{print $1, $2, $3, $4, $5}')
 tdc2=$(timedatectl | grep "Universal time" | awk '{print $1, $2, $3, $4, $5}')
