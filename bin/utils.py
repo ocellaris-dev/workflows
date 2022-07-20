@@ -7,7 +7,7 @@ import requests
 
 
 def get_package_info():
-    res = requests.get("https://raw.githubusercontent.com/misskey-dev/misskey/develop/package.json")
+    res = requests.get("https://raw.githubusercontent.com/ocellaris-dev/stella/develop/package.json")
     info = json.loads(res.text)
     return info["version"]
 
@@ -25,6 +25,7 @@ def gen_str(size=8):
 def get_time():
     tm = time.localtime(time.time())
     return time.strftime("%H:%M", tm) + " (KST)"
+
 
 def get_snapshot_utc_time():
     utc = datetime.datetime.utcnow()

@@ -1,5 +1,19 @@
 #!/bin/bash
 
+echo
+
+#current time
+tdc1=$(timedatectl | grep "Local time" | awk '{print $1, $2, $3, $4, $5}')
+tdc2=$(timedatectl | grep "Universal time" | awk '{print $1, $2, $3, $4, $5}')
+tdc3=$(timedatectl | grep "RTC time" | awk '{print $1, $2, $3, $4, $5}')
+tdc4=$(timedatectl | grep "Time zone" | awk '{print $1, $2, $3, $4, $5}')
+echo "$tdc1"
+echo "$tdc2"
+echo "$tdc3"
+echo "$tdc4"
+
+echo
+
 # package.json
 echo "Checking package.json..."
 repo_ver=$(curl -s https://raw.githubusercontent.com/misskey-dev/misskey/develop/package.json | grep version | awk -F \" '{print $4}')

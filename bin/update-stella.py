@@ -1,14 +1,14 @@
 import os
-import subprocess
 import sys
 import time
 
 import misskey
-import utils
 import stella
+import utils
 
 credential = os.getenv("MISSKEY_CREDENTIAL")
 debug = False
+
 
 def send_update_message(repo, ins):
     current_time = utils.get_time()
@@ -21,7 +21,6 @@ def send_update_message(repo, ins):
 
 def send_done_message(replyid):
     misskey.send_reply("✅ 업데이트가 완료되었습니다.", credential, replyid, debug)
-    
 
 
 def send_fail_message(replyid):
@@ -63,6 +62,7 @@ def get_update():
         print("Misskey is up-to-date!")
         exit()
 
+
 def debug_functions():
     print("[Utils Test]")
     print("get_time-> ", utils.get_time())
@@ -77,6 +77,7 @@ def debug_functions():
     print("[Snapshot Build Test]")
     snapshot_name = stella.build_snapshot()
     print("-> SNAPSHOT_NAME: ", snapshot_name)
+
 
 if len(sys.argv) > 1 and sys.argv[1] == "-d":
     debug = True
