@@ -26,6 +26,7 @@ def get_time():
     tm = time.localtime(time.time())
     return time.strftime("%H:%M", tm) + " (KST)"
 
+
 def get_snapshot_utc_time():
     utc = datetime.datetime.utcnow()
     return utc.strftime("%Y%m%d%H%M%S")
