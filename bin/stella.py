@@ -1,6 +1,7 @@
 import subprocess
+
 import utils
-import time
+
 
 def build_snapshot():
     utc_str = utils.get_snapshot_utc_time()
