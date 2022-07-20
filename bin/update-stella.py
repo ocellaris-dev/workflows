@@ -29,8 +29,12 @@ def send_fail_message(replyid):
 
 
 def get_update():
-    repo_ver = utils.get_package_info()
-    ins_ver = utils.get_misskey_info()
+    try:
+        repo_ver = utils.get_package_info()
+        ins_ver = utils.get_misskey_info()
+    except:
+        print("Cannot load version info. terminate update process.")
+        exit()
     print("package.json Version ->")
     print(repo_ver)
     print("Installed Misskey version ->")
