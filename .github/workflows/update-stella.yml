@@ -48,11 +48,11 @@ jobs:
         env:
           MISSKEY_CREDENTIAL: ${{ secrets.MISSKEY_CREDENTIAL }}
         run: |
-          python3 /home/runner/work/workflows/workflows/bin/update-stella.py
+          python3 /home/runner/work/workflows/workflows/stella/update-stella.py
 
       - name: Update.py - debug mode
         if: ${{ github.event.inputs.debug == 'true' }}
         env:
           MISSKEY_CREDENTIAL: ${{ secrets.MISSKEY_CREDENTIAL }}
         run: |
-          python3 /home/runner/work/workflows/workflows/bin/update-stella.py -d
+          python3 /home/runner/work/workflows/workflows/stella/update-stella.py -d
