@@ -15,7 +15,7 @@ def send_update_message(repo, ins):
     message = f"[Stella Update] \n{current_time} 업데이트 준비가 완료되었습니다. \nMisskey {ins} -> {repo} \n*본 업데이트는 자동으로 진행됩니다."
     if debug:
         message = message + "\n**[본 메시지는 자동 업데이트 시스템을 테스트하기 위한 디버그 메시지입니다. 업데이트가 진행되지 않으니 무시하시길 바랍니다.]**"
-    return misskey.send_toot(message, credential, debug)
+    return misskey.send_notes(message, credential, debug)
 
 
 def send_done_message(replyid):
