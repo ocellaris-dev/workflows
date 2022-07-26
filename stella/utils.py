@@ -24,7 +24,8 @@ def gen_str(size=8):
 
 def get_time():
     tm = time.localtime(time.time())
-    return time.strftime("%H:%M", tm) + " (UTC+9)"
+    stt = time.strftime("%H:%M", tm)
+    return f "{stt} (UTC+9)"
 
 
 def get_snapshot_utc_time():
